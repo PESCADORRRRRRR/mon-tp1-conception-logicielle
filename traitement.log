@@ -1,0 +1,8 @@
+INFO:root:Lancement du traitement
+ERROR:root:aucune timezone n'a été renseignée
+DEBUG:root:Demande d'heure sur le timezone : Indian/Reunion
+INFO:root:result 19:43:30
+INFO:root:Lancement du traitement
+ERROR:root:aucune timezone n'a été renseignée
+DEBUG:root:Demande d'heure sur le timezone : Indian/Reunion
+INFO:root:result 19:43:37

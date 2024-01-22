@@ -1,22 +1,20 @@
-import datetime
-
+from datetime import datetime
 import pytz
+import logging
 
-#methode 1
-heure_actuelle =datetime.datetime.now().strftime(("%H:%M:%S"))
-#print("L'heure actuelle est :", heure_actuelle)
-
-#methode2
-
-    # obtention de la date et l'heure actuelle
-heure_locale =datetime.datetime.now()
-    #definition du fuseau horaire cible
-fuseau_cible=pytz.timezone("Europe/Paris")
-    #application du zonage sur la date et l'heure
-heure_cible=heure_locale.astimezone(fuseau_cible)
-    #extraire l'heure dans le fuseau horaire cible
-heure= heure_cible.strftime("%H:%M:%S")
-print("L'heure actuelle dans le fuseau horaire est :", heure)
-
-
+logging.basicConfig(filename="traitement.log", encoding='utf-8', level=logging.DEBUG)
+logging.info(f"Lancement du traitement")
+timezone_paris = pytz.timezone('Europe/Paris')
+timezone_reunion = pytz.timezone('Indian/Reunion')
+def get_date_formatted(timezone):
+    if timezone is None:
+        raise ValueError("aucune timezone n'a été renseignée")
+    logging.debug(f"Demande d'heure sur le timezone : {timezone}")
+    date = datetime.now(timezone)
+    return date.strftime("%H:%M:%S")
+try:
+    get_date_formatted(None) 
+except ValueError as e:
+    logging.error(e)
+logging.info(f"result {get_date_formatted(timezone_reunion)}")
     
